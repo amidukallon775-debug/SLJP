@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SL Youth Jobs - Sierra Leone Job Portal</title>
+    <style>
+        :root {
+            --sl-green: #1EB53A;
+            --sl-blue: #0072C6;
+            --sl-white: #FFFFFF;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+            --text-color: #444444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--sl-green), var(--sl-blue));
+            color: var(--sl-white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+        }
+        
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: var(--sl-white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--sl-white);
+            color: var(--sl-blue);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--sl-white);
+            border: 1px solid var(--sl-white);
+        }
+        
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 114, 198, 0.8), rgba(30, 181, 58, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230072C6"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="%231EB53A" opacity="0.3"/></svg>');
+            background-size: cover;
+            color: var(--sl-white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .hero .btn {
+            padding: 12px 24px;
+            font-size: 1.1rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background-color: var(--sl-white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--sl-blue);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--sl-blue);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--sl-green);
+        }
+        
+        /* Job Listings */
+        .job-listings {
+            padding: 4rem 0;
+        }
+        
+        .filters {
+            background-color: var(--sl-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .job-card {
+            background-color: var(--sl-white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .job-card h3 {
+            color: var(--sl-blue);
+            margin-bottom: 10px;
+        }
+        
+        .job-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .job-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        /* District Map */
+        .district-map {
+            padding: 4rem 0;
+            background-color: var(--sl-white);
+        }
+        
+        .map-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .district-item {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .district-item:hover {
+            background-color: var(--sl-blue);
+            color: var(--sl-white);
+        }
+        
+        .district-item.active {
+            background-color: var(--sl-green);
+            color: var(--sl-white);
+        }
+        
+        /* Authentication Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--sl-white);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .auth-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-weight: 500;
+            color: #666;
+        }
+        
+        .auth-tab.active {
+            color: var(--sl-blue);
+            border-bottom: 2px solid var(--sl-blue);
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .social-btn {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--sl-white);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: var(--sl-green);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: var(--sl-white);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-row {
+                flex-direction: column;
+            }
+            
+            .map-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🌱</span>
+                    <h1>SL Youth Jobs</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#jobs">Find Jobs</a></li>
+                        <li><a href="#career-guidance">Career Guidance</a></li>
+                        <li><a href="#internships">Internships</a></li>
+                        <li><a href="#forum">Community</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-secondary" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Connecting Sierra Leone's Youth with Career Opportunities</h2>
+            <p>Find jobs, build skills, and grow your career with our dedicated platform for young graduates in Sierra Leone.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Find Jobs</button>
+                <button class="btn btn-secondary">Post a Job</button>
+                <button class="btn btn-secondary">Career Guidance</button>
+                <button class="btn btn-secondary">Chat Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose SL Youth Jobs?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile-Friendly</h3>
+                    <p>Access our platform on any device, optimized for low-bandwidth connections common in Sierra Leone.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Job Matching</h3>
+                    <p>AI-powered job recommendations based on your skills, education, and career interests.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Skill Building</h3>
+                    <p>Access micro-courses and certifications to enhance your employability in high-demand fields.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Community Support</h3>
+                    <p>Connect with peers, mentors, and employers through our community forum and chat system.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📲</div>
+                    <h3>SMS Notifications</h3>
+                    <p>Receive job alerts and interview updates via SMS, even without consistent internet access.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Local Focus</h3>
+                    <p>Designed specifically for Sierra Leone's job market with local partnerships and opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- District Map Section -->
+    <section class="district-map">
+        <div class="container">
+            <h2 class="section-title">Explore Opportunities Across All 16 Districts</h2>
+            <div class="map-container" id="districtMap">
+                <!-- Districts will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Listings -->
+    <section class="job-listings" id="jobs">
+        <div class="container">
+            <h2 class="section-title">Latest Job Opportunities</h2>
+            
+            <div class="filters">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="job-category">Job Category</label>
+                        <select id="job-category">
+                            <option value="">All Categories</option>
+                            <option value="technology">Technology</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="education">Education</option>
+                            <option value="agriculture">Agriculture</option>
+                            <option value="business">Business & Finance</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="location">Location</label>
+                        <select id="location">
+                            <option value="">All Districts</option>
+                            <!-- Districts will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="experience">Experience Level</label>
+                        <select id="experience">
+                            <option value="">All Levels</option>
+                            <option value="entry">Entry Level</option>
+                            <option value="mid">Mid Level</option>
+                            <option value="senior">Senior Level</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="education">Education</label>
+                        <select id="education">
+                            <option value="">Any Education</option>
+                            <option value="high-school">High School</option>
+                            <option value="diploma">Diploma</option>
+                            <option value="bachelor">Bachelor's Degree</option>
+                            <option value="master">Master's Degree</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="salary">Salary Range</label>
+                        <select id="salary">
+                            <option value="">Any Salary</option>
+                            <option value="0-500">Up to SLL 500,000</option>
+                            <option value="500-1000">SLL 500,000 - 1,000,000</option>
+                            <option value="1000-2000">SLL 1,000,000 - 2,000,000</option>
+                            <option value="2000+">Above SLL 2,000,000</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="search">Search Keywords</label>
+                        <input type="text" id="search" placeholder="Job title, company, or keywords">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="jobs-grid" id="jobsContainer">
+                <!-- Job listings will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Authentication Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Join SL Youth Jobs</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="signup">Sign Up</button>
+            </div>
+            
+            <div class="auth-form active" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password">
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="rememberMe"> Remember me
+                    </label>
+                    <a href="#" style="float: right;">Forgot password?</a>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;">Login</button>
+                
+                <div class="social-login">
+                    <button class="social-btn">
+                        <span>G</span> Google
+                    </button>
+                    <button class="social-btn">
+                        <span>f</span> Facebook
+                    </button>
+                </div>
+                
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#" class="switch-to-signup">Sign up</a></p>
+                </div>
+            </div>
+            
+            <div class="auth-form" id="signupForm">
+                <div class="form-group">
+                    <label for="userType">I am a</label>
+                    <select id="userType">
+                        <option value="jobseeker">Job Seeker</option>
+                        <option value="employer">Employer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password">
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="agreeTerms"> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;">Create Account</button>
+                
+                <div class="social-login">
+                    <button class="social-btn">
+                        <span>G</span> Google
+                    </button>
+                    <button class="social-btn">
+                        <span>f</span> Facebook
+                    </button>
+                </div>
+                
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" class="switch-to-login">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SL Youth Jobs</h3>
+                    <p>Connecting young Sierra Leonean graduates with career opportunities, skill development, and community support.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#jobs">Find Jobs</a></li>
+                        <li><a href="#career-guidance">Career Guidance</a></li>
+                        <li><a href="#internships">Internships</a></li>
+                        <li><a href="#forum">Community Forum</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Employers</h3>
+                    <ul>
+                        <li><a href="#">Post a Job</a></li>
+                        <li><a href="#">Browse Candidates</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Employer Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: info@slyouthjobs.com</li>
+                        <li>Phone: +232 00 000 000</li>
+                        <li>Address: Freetown, Sierra Leone</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 SL Youth Jobs. All rights reserved. | Proudly Sierra Leonean</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sierra Leone Districts Data
+        const districts = [
+            { id: 1, name: "Western Area Urban (Freetown)", jobs: 45 },
+            { id: 2, name: "Western Area Rural", jobs: 18 },
+            { id: 3, name: "Port Loko", jobs: 12 },
+            { id: 4, name: "Bombali", jobs: 15 },
+            { id: 5, name: "Kambia", jobs: 8 },
+            { id: 6, name: "Karene", jobs: 6 },
+            { id: 7, name: "Tonkolili", jobs: 9 },
+            { id: 8, name: "Koinadugu", jobs: 5 },
+            { id: 9, name: "Falaba", jobs: 4 },
+            { id: 10, name: "Bo", jobs: 22 },
+            { id: 11, name: "Moyamba", jobs: 7 },
+            { id: 12, name: "Bonthe", jobs: 5 },
+            { id: 13, name: "Pujehun", jobs: 6 },
+            { id: 14, name: "Kenema", jobs: 19 },
+            { id: 15, name: "Kailahun", jobs: 8 },
+            { id: 16, name: "Kono", jobs: 11 }
+        ];
+
+        // Sample job data
+        const jobs = [
+            {
+                id: 1,
+                title: "Junior Software Developer",
+                company: "Tech Sierra Leone",
+                location: "Western Area Urban (Freetown)",
+                type: "Full-time",
+                experience: "Entry Level",
+                salary: "SLL 800,000 - 1,200,000",
+                category: "technology",
+                posted: "2 days ago",
+                description: "We're looking for a passionate junior developer to join our growing team. Knowledge of JavaScript and web development required."
+            },
+            {
+                id: 2,
+                title: "Community Health Worker",
+                company: "Health for All SL",
+                location: "Bo",
+                type: "Full-time",
+                experience: "Entry Level",
+                salary: "SLL 600,000 - 900,000",
+                category: "healthcare",
+                posted: "1 week ago",
+                description: "Join our community health initiative to provide basic healthcare services in rural areas. Training will be provided."
+            },
+            {
+                id: 3,
+                title: "Agriculture Extension Officer",
+                company: "Green Future SL",
+                location: "Kenema",
+                type: "Full-time",
+                experience: "Mid Level",
+                salary: "SLL 700,000 - 1,000,000",
+                category: "agriculture",
+                posted: "3 days ago",
+                description: "Work with local farmers to implement sustainable farming practices. Degree in Agriculture or related field required."
+            },
+            {
+                id: 4,
+                title: "Customer Service Representative",
+                company: "Connect Telecom",
+                location: "Western Area Urban (Freetown)",
+                type: "Full-time",
+                experience: "Entry Level",
+                salary: "SLL 500,000 - 750,000",
+                category: "business",
+                posted: "5 days ago",
+                description: "Excellent communication skills needed for our customer service team. Previous experience in customer-facing roles preferred."
+            },
+            {
+                id: 5,
+                title: "Primary School Teacher",
+                company: "Future Leaders Academy",
+                location: "Makeni",
+                type: "Full-time",
+                experience: "Entry Level",
+                salary: "SLL 550,000 - 800,000",
+                category: "education",
+                posted: "1 day ago",
+                description: "Passionate about education? Join our team of dedicated teachers shaping the next generation of Sierra Leonean leaders."
+            },
+            {
+                id: 6,
+                title: "Marketing Intern",
+                company: "SL Business Solutions",
+                location: "Remote",
+                type: "Internship",
+                experience: "Entry Level",
+                salary: "SLL 300,000 - 400,000",
+                category: "business",
+                posted: "4 days ago",
+                description: "Great opportunity for recent graduates to gain experience in digital marketing and business development."
+            },
+            {
+                id: 7,
+                title: "Nurse",
+                company: "Bo Government Hospital",
+                location: "Bo",
+                type: "Full-time",
+                experience: "Mid Level",
+                salary: "SLL 650,000 - 950,000",
+                category: "healthcare",
+                posted: "6 days ago",
+                description: "Registered nurses needed for various departments. Must have valid nursing license and 2+ years experience."
+            },
+            {
+                id: 8,
+                title: "Agricultural Technician",
+                company: "Rural Development Initiative",
+                location: "Kono",
+                type: "Full-time",
+                experience: "Entry Level",
+                salary: "SLL 450,000 - 650,000",
+                category: "agriculture",
+                posted: "2 weeks ago",
+                description: "Support farmers with modern agricultural techniques and equipment maintenance. Diploma in Agriculture required."
+            }
+        ];
+
+        // DOM Elements
+        const authModal = document.getElementById('authModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const closeModal = document.querySelector('.close-modal');
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const authForms = document.querySelectorAll('.auth-form');
+        const jobsContainer = document.getElementById('jobsContainer');
+        const districtMap = document.getElementById('districtMap');
+        const locationFilter = document.getElementById('location');
+        const switchToSignupLinks = document.querySelectorAll('.switch-to-signup');
+        const switchToLoginLinks = document.querySelectorAll('.switch-to-login');
+
+        // Display districts in the map and filter
+        function displayDistricts() {
+            // Add districts to the map
+            districtMap.innerHTML = '';
+            districts.forEach(district => {
+                const districtItem = document.createElement('div');
+                districtItem.className = 'district-item';
+                districtItem.innerHTML = `
+                    <h4>${district.name}</h4>
+                    <p>${district.jobs} jobs available</p>
+                `;
+                districtItem.addEventListener('click', () => {
+                    // Remove active class from all districts
+                    document.querySelectorAll('.district-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    // Add active class to clicked district
+                    districtItem.classList.add('active');
+                    // Filter jobs by this district
+                    document.getElementById('location').value = district.name;
+                    filterJobs();
+                });
+                districtMap.appendChild(districtItem);
+            });
+
+            // Add districts to the location filter
+            locationFilter.innerHTML = '<option value="">All Districts</option>';
+            districts.forEach(district => {
+                const option = document.createElement('option');
+                option.value = district.name;
+                option.textContent = district.name;
+                locationFilter.appendChild(option);
+            });
+        }
+
+        // Display jobs on page load
+        function displayJobs(jobsToDisplay) {
+            jobsContainer.innerHTML = '';
+            
+            if (jobsToDisplay.length === 0) {
+                jobsContainer.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px;">No jobs found matching your criteria. Try adjusting your filters.</p>';
+                return;
+            }
+            
+            jobsToDisplay.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card';
+                jobCard.innerHTML = `
+                    <h3>${job.title}</h3>
+                    <p><strong>${job.company}</strong></p>
+                    <div class="job-meta">
+                        <span>📍 ${job.location}</span>
+                        <span>🕒 ${job.type}</span>
+                    </div>
+                    <div class="job-meta">
+                        <span>👤 ${job.experience}</span>
+                        <span>💰 ${job.salary}</span>
+                    </div>
+                    <p>${job.description}</p>
+                    <div class="job-actions">
+                        <button class="btn btn-primary">Apply Now</button>
+                        <button class="btn btn-secondary">Save</button>
+                    </div>
+                    <p style="margin-top: 10px; font-size: 0.8rem; color: #999;">Posted ${job.posted}</p>
+                `;
+                jobsContainer.appendChild(jobCard);
+            });
+        }
+
+        // Filter jobs based on selected criteria
+        function filterJobs() {
+            const category = document.getElementById('job-category').value;
+            const location = document.getElementById('location').value;
+            const experience = document.getElementById('experience').value;
+            const education = document.getElementById('education').value;
+            const salary = document.getElementById('salary').value;
+            const search = document.getElementById('search').value.toLowerCase();
+            
+            const filteredJobs = jobs.filter(job => {
+                return (
+                    (category === '' || job.category === category) &&
+                    (location === '' || job.location === location) &&
+                    (experience === '' || job.experience.toLowerCase().includes(experience)) &&
+                    (education === '' || true) && // Education filter would need additional data
+                    (salary === '' || true) && // Salary filter would need additional data
+                    (search === '' || 
+                     job.title.toLowerCase().includes(search) || 
+                     job.company.toLowerCase().includes(search) ||
+                     job.description.toLowerCase().includes(search))
+                );
+            });
+            
+            displayJobs(filteredJobs);
+        }
+
+        // Event Listeners
+        loginBtn.addEventListener('click', () => {
+            authModal.style.display = 'flex';
+            document.querySelector('[data-tab="login"]').click();
+        });
+
+        signupBtn.addEventListener('click', () => {
+            authModal.style.display = 'flex';
+            document.querySelector('[data-tab="signup"]').click();
+        });
+
+        closeModal.addEventListener('click', () => {
+            authModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === authModal) {
+                authModal.style.display = 'none';
+            }
+        });
+
+        authTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabName = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                authTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show corresponding form
+                authForms.forEach(form => {
+                    form.classList.remove('active');
+                    if (form.id === `${tabName}Form`) {
+                        form.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        switchToSignupLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('[data-tab="signup"]').click();
+            });
+        });
+
+        switchToLoginLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('[data-tab="login"]').click();
+            });
+        });
+
+        // Filter event listeners
+        document.getElementById('job-category').addEventListener('change', filterJobs);
+        document.getElementById('location').addEventListener('change', filterJobs);
+        document.getElementById('experience').addEventListener('change', filterJobs);
+        document.getElementById('education').addEventListener('change', filterJobs);
+        document.getElementById('salary').addEventListener('change', filterJobs);
+        document.getElementById('search').addEventListener('input', filterJobs);
+
+        // Initialize the page
+        displayDistricts();
+        displayJobs(jobs);
+    </script>
+</body>
+</html>
